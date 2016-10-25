@@ -15,7 +15,7 @@ class SymfonyProcessSpec extends ObjectBehavior
         $this->shouldHaveType('Treffynnon\CmdWrap\Runners\SymfonyProcess');
     }
 
-    function it_can_process_a_simple_command($assembler, $builder, $commandLine)
+    function it_can_process_a_simple_command($assembler, $builder, $commandLine, $response)
     {
         $commandLine->beADoubleOf('Treffynnon\CmdWrap\Types\CommandCollectionInterface');
         $commandLine->get()->willReturn(array());
@@ -24,10 +24,11 @@ class SymfonyProcessSpec extends ObjectBehavior
         $assembler->getCommandLine(Argument::type('closure'))->willReturn($commandLine);
         $builder->beADoubleOf('Treffynnon\CmdWrap\Types\RunnableInterface');
         $builder->getCommandAssembler()->willReturn($assembler);
+        $response->beADoubleOf('Treffynnon\CmdWrap\ResponseInterface');
+        $response->set("date '+%Y-%m-%d'", 0, date('Y-m-d') . "\n", "")->shouldBeCalled();
+        $this->setResponseClass($response);
 
-        $this->run($builder);
-        $this->getLastCommand()->shouldBeLike("date '+%Y-%m-%d'");
-        $this->getOutput()->shouldContain(date('Y-m-d'));
+        $this->run($builder)->shouldReturnAnInstanceOf('Treffynnon\CmdWrap\ResponseInterface');
     }
 
     function it_can_filter_out_env_vars($assembler, $builder)

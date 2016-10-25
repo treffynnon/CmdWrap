@@ -10,9 +10,9 @@ class SymfonyProcessTest extends PHPUnit_Framework_TestCase
         $x = new Builder();
         $x->addCommand('date')
           ->addParameter('+%d-%m-%Y');
-        $r = new SymfonyProcess();
-        $r->run($x);
-        $this->assertSame("date '+%d-%m-%Y'", $r->getLastCommand());
+        $runner = new SymfonyProcess();
+        $r = $runner->run($x);
+        $this->assertSame("date '+%d-%m-%Y'", $r->getCommand());
         $this->assertSame(date('d-m-Y'), trim($r->getOutput()));
         $this->assertSame(0, $r->getStatus());
     }
@@ -22,11 +22,11 @@ class SymfonyProcessTest extends PHPUnit_Framework_TestCase
         $x = new Builder();
         $x->addCommand('date')
             ->addParameter('+%d-%m-%Y');
-        $r = new SymfonyProcess();
-        $r->run($x, function ($line) {
+        $runner = new SymfonyProcess();
+        $r = $runner->run($x, function ($line) {
             return str_replace(date('Y'), '', $line);
         });
-        $this->assertSame("date '+%d-%m-%Y'", $r->getLastCommand());
+        $this->assertSame("date '+%d-%m-%Y'", $r->getCommand());
         $this->assertSame(date('d-m-'), trim($r->getOutput()));
         $this->assertSame(0, $r->getStatus());
     }
@@ -36,10 +36,11 @@ class SymfonyProcessTest extends PHPUnit_Framework_TestCase
         $x = new Builder();
         $x->addCommand('dat1e')
             ->addParameter('+%d-%m-%Y');
-        $r = new SymfonyProcess();
-        $r->run($x);
-        $this->assertSame("dat1e '+%d-%m-%Y'", $r->getLastCommand());
+        $runner = new SymfonyProcess();
+        $r = $runner->run($x);
+        $this->assertSame("dat1e '+%d-%m-%Y'", $r->getCommand());
         $this->assertSame('', trim($r->getOutput()));
         $this->assertSame(127, $r->getStatus());
+        $this->assertSame("sh: dat1e: command not found\n", $r->getError());
     }
 }

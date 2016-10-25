@@ -9,6 +9,9 @@ use Treffynnon\CmdWrap\Types\RunnableInterface;
 
 class SymfonyProcess extends RunnerAbstract implements RunnerInterface
 {
+    protected $command = '';
+    protected $output = '';
+
     /**
      * @link http://symfony.com/doc/current/components/process.html
      * @param RunnableInterface $command
@@ -20,22 +23,24 @@ class SymfonyProcess extends RunnerAbstract implements RunnerInterface
         if (is_null($callable)) {
             $this->output = $process->getOutput();
         }
+        return $this->getResponseClass(
+            $this->command,
+            $process->getExitCode(),
+            $this->output,
+            $process->getErrorOutput()
+        );
     }
 
     protected function runProcess(RunnableInterface $command, callable $func = null)
     {
-        $this->lastCommand = $this->getCommandStringExcludingEnvVars($command);
+        $this->command = $this->getCommandStringExcludingEnvVars($command);
         $process = new Process(
-            $this->lastCommand,
+            $this->command,
             null,
             $this->getEnvVarArray($command)
         );
         $process->setTimeout(3600);
-        try {
-            $process->mustRun($func);
-        } catch (ProcessFailedException $e) {
-        }
-        $this->status = $process->getExitCode();
+        $process->run($func);
         return $process;
     }
 

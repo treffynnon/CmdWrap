@@ -14,15 +14,15 @@ class Exec extends RunnerAbstract implements RunnerInterface
      */
     public function run(RunnableInterface $command, callable $func = null)
     {
-        $this->lastCommand = (string) $command->getCommandAssembler();
-        $return = exec($this->lastCommand, $this->output, $this->status);
+        $command = (string) $command->getCommandAssembler();
+        $return = exec($command, $output, $status);
         if ($func) {
             $t = '';
-            foreach ($this->output as $line) {
+            foreach ($output as $line) {
                 $t .= call_user_func($func, $line);
             }
-            $this->output = $t;
+            $output = $t;
         }
-        return $return;
+        return $this->getResponseClass($command, $status, $output);
     }
 }

@@ -18,8 +18,8 @@ class Passthru extends RunnerAbstract implements RunnerInterface
             throw new \Exception('You cannot process passthru with a callable. Use another Runner instead.');
         }
 
-        $this->lastCommand = (string) $command->getCommandAssembler();
-        passthru($this->lastCommand, $this->status);
-        $this->output = '';
+        $command = (string) $command->getCommandAssembler();
+        passthru($command, $status);
+        return $this->getResponseClass($command, $status, '');
     }
 }

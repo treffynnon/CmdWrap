@@ -13,16 +13,20 @@ class System extends RunnerAbstract implements RunnerInterface
      */
     public function run(RunnableInterface $command, callable $func = null)
     {
-        $this->lastCommand = (string) $command->getCommandAssembler();
-        $this->output = system($this->lastCommand, $this->status);
+        $command = (string) $command->getCommandAssembler();
+        $output = system($command, $status);
         if ($func) {
             $t = '';
-            $x = preg_split("/\n/", $this->output);
+            $x = preg_split("/\n/", $output);
             foreach ($x as $line) {
                 $t .= call_user_func($func, $line);
             }
-            $this->output = $t;
+            $output = $t;
         }
-        return $this->output;
+        return $this->getResponseClass(
+            $command,
+            $status,
+            $output
+        );
     }
 }

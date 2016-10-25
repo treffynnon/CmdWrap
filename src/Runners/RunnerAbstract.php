@@ -7,24 +7,25 @@ abstract class RunnerAbstract
     protected $output = '';
     protected $status = '';
     protected $lastCommand = '';
+    protected $responseClass;
 
-    public function getLastCommand()
+    public function __construct(\Treffynnon\CmdWrap\ResponseInterface $class = null)
     {
-        return $this->lastCommand;
+        $this->setResponseClass(new \Treffynnon\CmdWrap\Response);
+        if ($class) {
+            $this->setResponseClass($class);
+        }
     }
 
-    public function getOutput()
+    public function setResponseClass(\Treffynnon\CmdWrap\ResponseInterface $class)
     {
-        return $this->output;
+        $this->responseClass = $class;
     }
 
-    public function getStatus()
+    public function getResponseClass($command, $status, $output, $error = '')
     {
-        return $this->status;
-    }
-
-    public function __toString()
-    {
-        return $this->getOutput();
+        $response = clone $this->responseClass;
+        $response->set($command, $status, $output, $error);
+        return $response;
     }
 }

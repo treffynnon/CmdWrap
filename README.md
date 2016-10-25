@@ -24,7 +24,7 @@ $bld->addEnvVar('JAVA_BIN', '/usr/bin/java')
     ->addArgument('results-log', '/tmp/results.log')
     ->addRaw('> /dev/null 2>&1');
 $sp = new SymfonyProcess();
-$sp->run($bld);
+$response = $sp->run($bld);
 // JAVA_BIN='/usr/bin/java' TMP_DIR='/tmp' foo -f -t='xml' src/ --verbose --results-log='/tmp/results.log' > /dev/null 2>&1
 ```
 
@@ -45,7 +45,7 @@ $bld->addEnvVar('JAVA_BIN', '/usr/bin/java')
     ->addArgument('results-log', '/tmp/results.log')
     ->addRaw('> /dev/null 2>&1');
 $sp = new SymfonyProcess();
-$sp->run($bld, function ($line) {
+$response = $sp->run($bld, function ($line) {
     return str_replace("\t", '    ', $line);
 });
 // JAVA_BIN='/usr/bin/java' TMP_DIR='/tmp' foo -f -t='xml' src/ --verbose --results-log='/tmp/results.log' > /dev/null 2>&1
@@ -54,13 +54,13 @@ $sp->run($bld, function ($line) {
 This would replace all tabs with four (4) spaces in each line of output from the command.
 Note that the new value must be returned from your lambda.
 
-You can then get the output in the usual way by calling `$sp->getOutput()`.
+You can then get the output in the usual way by calling `$response->getOutput()`.
 
 If you want to have updates in real time from long running command then you need
 to use the `SymfonyProcess` runner and log/echo from your custom callback function.
 
 ```php
-$sp->run($bld, function ($line) use ($logger) {
+$response = $sp->run($bld, function ($line) use ($logger) {
     $logger->push("New line added: $line");
     return str_replace("\t", '    ', $line);
 });
@@ -110,6 +110,9 @@ appropriate caution.
 
 By implementing `Treffynnon\CmdWrap\Runners\RunnerInterface` you can also
 provide your own custom runner.
+
+When a command is executed via a runner it will return an instance of `\Treffynnon\CmdWrap\Response`
+containing the response from STDOUT and STDERR if available.
 
 ## Command combinators
 
