@@ -100,4 +100,14 @@ class Builder implements BuilderInterface, CombinableInterface, RunnableInterfac
     {
         return (string) $this->getCommandAssembler();
     }
+
+    /**
+     * Ensure that we get a fresh CommandCollection object when the builder
+     * is cloned to prevent builders from working on the same Collection. If
+     * they did then commands would be added to the same collection.
+     */
+    public function __clone()
+    {
+        $this->setCommandCollection(clone $this->command);
+    }
 }
