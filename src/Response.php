@@ -60,6 +60,8 @@ class Response implements ResponseInterface
 
     public function __toString()
     {
-        return (string) $this->getOutput();
+        return $this->wasSuccess
+          ? (string) $this->getOutput()
+          : (string) $this->getError();
     }
 }
