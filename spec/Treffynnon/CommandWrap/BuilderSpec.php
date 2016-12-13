@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Treffynnon\CmdWrap;
+namespace spec\Treffynnon\CommandWrap;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -9,7 +9,7 @@ class BuilderSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Treffynnon\CmdWrap\Builder');
+        $this->shouldHaveType('Treffynnon\CommandWrap\Builder');
     }
 
     function it_should_have_ability_to_add_a_command()
@@ -19,11 +19,11 @@ class BuilderSpec extends ObjectBehavior
 
     function it_print_command_to_string($assembler, $collection)
     {
-        $assembler->beADoubleOf('Treffynnon\CmdWrap\Assemblers\AssemblerInterface');
+        $assembler->beADoubleOf('Treffynnon\CommandWrap\Assemblers\AssemblerInterface');
         $assembler->setCommandLine(Argument::type('object'))->willReturn(null);
         $assembler->getCommandString()->willReturn('simon');
 
-        $collection->beADoubleOf('Treffynnon\CmdWrap\Types\CommandCollectionInterface');
+        $collection->beADoubleOf('Treffynnon\CommandWrap\Types\CommandCollectionInterface');
 
         $this->beConstructedWith($assembler, $collection);
 
@@ -33,12 +33,12 @@ class BuilderSpec extends ObjectBehavior
 
     function it_should_build_a_complex_command_string($assembler, $collection)
     {
-        $assembler->beADoubleOf('Treffynnon\CmdWrap\Assemblers\AssemblerInterface');
+        $assembler->beADoubleOf('Treffynnon\CommandWrap\Assemblers\AssemblerInterface');
         $assembler->setCommandLine(Argument::type('object'))->willReturn(null);
         $assembler->getCommandString()->willReturn("Simon -f -t='xml' src/ --verbose --results-log='/tmp/results.log'");
 
-        $collection->beADoubleOf('Treffynnon\CmdWrap\Types\CommandCollectionInterface');
-        $collection->push(Argument::type('Treffynnon\CmdWrap\Types\CommandLine\CommandLineInterface'))->willReturn(null);
+        $collection->beADoubleOf('Treffynnon\CommandWrap\Types\CommandCollectionInterface');
+        $collection->push(Argument::type('Treffynnon\CommandWrap\Types\CommandLine\CommandLineInterface'))->willReturn(null);
 
         $this->beConstructedWith($assembler, $collection);
 
@@ -56,11 +56,11 @@ class BuilderSpec extends ObjectBehavior
 
     function it_should_build_an_ultra_complex_command_string($assembler, $collection)
     {
-        $assembler->beADoubleOf('Treffynnon\CmdWrap\Assemblers\AssemblerInterface');
+        $assembler->beADoubleOf('Treffynnon\CommandWrap\Assemblers\AssemblerInterface');
         $assembler->setCommandLine(Argument::type('object'))->willReturn(null);
         $assembler->getCommandString()->willReturn("JAVA_BIN='/usr/bin/java' TMP_DIR='/tmp' hint\&\&hint foo -f -t='xml' src/ --verbose --results-log='/tmp/results.log'");
 
-        $collection->beADoubleOf('Treffynnon\CmdWrap\Types\CommandCollectionInterface');
+        $collection->beADoubleOf('Treffynnon\CommandWrap\Types\CommandCollectionInterface');
 
         $this->beConstructedWith($assembler, $collection);
 
@@ -80,11 +80,11 @@ class BuilderSpec extends ObjectBehavior
 
     function it_should_build_an_ultra_complex_command_string_filtering_out_env_vars($assembler, $collection)
     {
-        $assembler->beADoubleOf('Treffynnon\CmdWrap\Assemblers\AssemblerInterface');
+        $assembler->beADoubleOf('Treffynnon\CommandWrap\Assemblers\AssemblerInterface');
         $assembler->setCommandLine(Argument::type('object'))->willReturn(null);
         $assembler->getCommandString(Argument::type('closure'))->willReturn("hint\&\&hint foo -f -t='xml' src/ --verbose --results-log='/tmp/results.log' > /dev/null 2>&1");
 
-        $collection->beADoubleOf('Treffynnon\CmdWrap\Types\CommandCollectionInterface');
+        $collection->beADoubleOf('Treffynnon\CommandWrap\Types\CommandCollectionInterface');
 
         $this->beConstructedWith($assembler, $collection);
 
@@ -100,7 +100,7 @@ class BuilderSpec extends ObjectBehavior
              ->addRaw('> /dev/null 2>&1')
              ->getCommandAssembler()
              ->getCommandString(function($item) {
-                 return !($item instanceOf \Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface);
+                 return !($item instanceOf \Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface);
              })
              ->shouldBeLike("hint\&\&hint foo -f -t='xml' src/ --verbose --results-log='/tmp/results.log' > /dev/null 2>&1");
     }

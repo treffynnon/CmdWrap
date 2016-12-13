@@ -1,9 +1,9 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Assemblers;
+namespace Treffynnon\CommandWrap\Assemblers;
 
-use Treffynnon\CmdWrap\Types\CommandCollectionInterface;
-use Treffynnon\CmdWrap\Utils as U;
+use Treffynnon\CommandWrap\Types\CommandCollectionInterface;
+use Treffynnon\CommandWrap\Utils as U;
 
 class ChronoAssembler extends AssemblerAbstract
 {

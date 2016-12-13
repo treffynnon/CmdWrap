@@ -1,6 +1,6 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Combinators;
+namespace Treffynnon\CommandWrap\Combinators;
 
 interface CombinableInterface
 {

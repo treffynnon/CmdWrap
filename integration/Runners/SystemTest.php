@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Runners\System;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Runners\System;
 
 class SystemTest extends PHPUnit_Framework_TestCase
 {

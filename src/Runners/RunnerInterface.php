@@ -1,8 +1,8 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Runners;
+namespace Treffynnon\CommandWrap\Runners;
 
-use Treffynnon\CmdWrap\Types\RunnableInterface;
+use Treffynnon\CommandWrap\Types\RunnableInterface;
 
 interface RunnerInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Utils {
+namespace Treffynnon\CommandWrap\Utils {
 
     function escapeArgument($arg)
     {

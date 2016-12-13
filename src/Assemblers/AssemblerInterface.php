@@ -1,8 +1,8 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Assemblers;
+namespace Treffynnon\CommandWrap\Assemblers;
 
-use Treffynnon\CmdWrap\Types\CommandCollectionInterface;
+use Treffynnon\CommandWrap\Types\CommandCollectionInterface;
 
 interface AssemblerInterface
 {

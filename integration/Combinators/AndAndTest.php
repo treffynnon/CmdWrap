@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Combinators\AndAnd;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Combinators\AndAnd;
 
 class AndAndTest extends PHPUnit_Framework_TestCase
 {

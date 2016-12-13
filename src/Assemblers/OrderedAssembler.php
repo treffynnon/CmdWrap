@@ -1,8 +1,8 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Assemblers;
+namespace Treffynnon\CommandWrap\Assemblers;
 
-use Treffynnon\CmdWrap\Types\CommandLine;
+use Treffynnon\CommandWrap\Types\CommandLine;
 
 class OrderedAssembler extends AssemblerAbstract implements AssemblerInterface
 {
@@ -33,7 +33,7 @@ class OrderedAssembler extends AssemblerAbstract implements AssemblerInterface
     protected function getSortOrderByInterface(CommandLine\CommandLineInterface $object)
     {
         foreach (static::SORT_ORDER as $key => $interface) {
-            if (is_a($object, '\\Treffynnon\\CmdWrap\\Types\\CommandLine\\' . $interface)) {
+            if (is_a($object, '\\Treffynnon\\CommandWrap\\Types\\CommandLine\\' . $interface)) {
                 return $key;
             }
         }

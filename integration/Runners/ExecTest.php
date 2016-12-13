@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Runners\Exec;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Runners\Exec;
 
 class ExecTest extends PHPUnit_Framework_TestCase
 {

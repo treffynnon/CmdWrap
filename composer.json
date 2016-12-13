@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Treffynnon\\CmdWrap\\": "src/"
+            "Treffynnon\\CommandWrap\\": "src/"
         },
         "files": [ "src/Utils.php" ]
     },

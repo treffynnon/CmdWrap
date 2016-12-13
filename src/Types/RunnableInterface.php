@@ -1,6 +1,6 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Types;
+namespace Treffynnon\CommandWrap\Types;
 
 interface RunnableInterface
 {

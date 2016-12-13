@@ -1,11 +1,11 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Runners;
+namespace Treffynnon\CommandWrap\Runners;
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
-use Treffynnon\CmdWrap\Types\CommandLine as CL;
+use Treffynnon\CommandWrap\Types\CommandLine as CL;
 use Symfony\Component\Process\Process;
-use Treffynnon\CmdWrap\Types\RunnableInterface;
+use Treffynnon\CommandWrap\Types\RunnableInterface;
 
 class SymfonyProcess extends RunnerAbstract implements RunnerInterface
 {

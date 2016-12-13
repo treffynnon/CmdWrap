@@ -1,16 +1,16 @@
 <?php
 
-namespace spec\Treffynnon\CmdWrap\Assemblers;
+namespace spec\Treffynnon\CommandWrap\Assemblers;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Treffynnon\CmdWrap\Types\CommandCollection;
+use Treffynnon\CommandWrap\Types\CommandCollection;
 
 class OrderedAssemblerSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Treffynnon\CmdWrap\Assemblers\OrderedAssembler');
+        $this->shouldHaveType('Treffynnon\CommandWrap\Assemblers\OrderedAssembler');
     }
 
     function it_should_call_filter(CommandCollection $cc)
@@ -22,11 +22,11 @@ class OrderedAssemblerSpec extends ObjectBehavior
 
     function it_can_assemble_a_command($cc)
     {
-        $cc->beADoubleOf('Treffynnon\CmdWrap\Types\CommandCollectionInterface');
+        $cc->beADoubleOf('Treffynnon\CommandWrap\Types\CommandCollectionInterface');
         $cc->reduce(Argument::type('closure'))->willReturn("TEST='value' test -v --verbose '/tmp/test.vv'");
         $cc->filter(null)->willReturn($cc);
         $cc->sort(Argument::type('closure'))->willReturn($cc);
-        $cc->push(Argument::type('Treffynnon\CmdWrap\Types\CommandLine\CommandLineInterface'))->willReturn(null);
+        $cc->push(Argument::type('Treffynnon\CommandWrap\Types\CommandLine\CommandLineInterface'))->willReturn(null);
 
         $this->setCommandLine($cc);
         $this->getCommandString()->shouldReturn("TEST='value' test -v --verbose '/tmp/test.vv'");

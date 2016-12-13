@@ -1,14 +1,14 @@
 <?php
 
-namespace Treffynnon\CmdWrap;
+namespace Treffynnon\CommandWrap;
 
-use Treffynnon\CmdWrap\Combinators\CombinableInterface;
-use Treffynnon\CmdWrap\Types\CommandCollectionInterface;
-use Treffynnon\CmdWrap\Types\CommandLine as CL;
-use Treffynnon\CmdWrap\Types\CommandCollection;
-use Treffynnon\CmdWrap\Assemblers\ChronoAssembler;
-use Treffynnon\CmdWrap\Assemblers\AssemblerInterface;
-use Treffynnon\CmdWrap\Types\RunnableInterface;
+use Treffynnon\CommandWrap\Combinators\CombinableInterface;
+use Treffynnon\CommandWrap\Types\CommandCollectionInterface;
+use Treffynnon\CommandWrap\Types\CommandLine as CL;
+use Treffynnon\CommandWrap\Types\CommandCollection;
+use Treffynnon\CommandWrap\Assemblers\ChronoAssembler;
+use Treffynnon\CommandWrap\Assemblers\AssemblerInterface;
+use Treffynnon\CommandWrap\Types\RunnableInterface;
 
 class Builder implements BuilderInterface, CombinableInterface, RunnableInterface
 {

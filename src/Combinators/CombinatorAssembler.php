@@ -1,9 +1,9 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Combinators;
+namespace Treffynnon\CommandWrap\Combinators;
 
-use Treffynnon\CmdWrap\Assemblers\AssemblerInterface;
-use Treffynnon\CmdWrap\Types\CommandCollectionInterface;
+use Treffynnon\CommandWrap\Assemblers\AssemblerInterface;
+use Treffynnon\CommandWrap\Types\CommandCollectionInterface;
 
 class CombinatorAssembler implements AssemblerInterface
 {

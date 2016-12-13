@@ -1,9 +1,9 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Types;
+namespace Treffynnon\CommandWrap\Types;
 
-use Treffynnon\CmdWrap\Types\CommandLine\CommandLineInterface;
-use Treffynnon\CmdWrap\Utils as U;
+use Treffynnon\CommandWrap\Types\CommandLine\CommandLineInterface;
+use Treffynnon\CommandWrap\Utils as U;
 
 class CommandCollection implements CommandCollectionInterface
 {

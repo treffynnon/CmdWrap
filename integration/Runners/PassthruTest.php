@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Runners\Passthru;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Runners\Passthru;
 
 class PassthruTest extends PHPUnit_Framework_TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Runners;
+namespace Treffynnon\CommandWrap\Runners;
 
-use Treffynnon\CmdWrap\BuilderInterface;
-use Treffynnon\CmdWrap\Types\RunnableInterface;
+use Treffynnon\CommandWrap\BuilderInterface;
+use Treffynnon\CommandWrap\Types\RunnableInterface;
 
 class Exec extends RunnerAbstract implements RunnerInterface
 {

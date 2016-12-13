@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Treffynnon\CmdWrap\Types\CommandLine;
+namespace spec\Treffynnon\CommandWrap\Types\CommandLine;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -9,8 +9,8 @@ class FlagSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Treffynnon\CmdWrap\Types\CommandLine\Flag');
-        $this->shouldHaveType('Treffynnon\CmdWrap\Types\CommandLine\FlagInterface');
+        $this->shouldHaveType('Treffynnon\CommandWrap\Types\CommandLine\Flag');
+        $this->shouldHaveType('Treffynnon\CommandWrap\Types\CommandLine\FlagInterface');
     }
 
     function it_can_accept_and_emit_values()

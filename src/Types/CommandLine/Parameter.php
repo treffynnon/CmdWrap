@@ -1,9 +1,9 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Types\CommandLine;
+namespace Treffynnon\CommandWrap\Types\CommandLine;
 
-use Treffynnon\CmdWrap\Utils as U;
-use Treffynnon\CmdWrap\Types\TypeAbstract;
+use Treffynnon\CommandWrap\Utils as U;
+use Treffynnon\CommandWrap\Types\TypeAbstract;
 
 class Parameter extends TypeAbstract implements CommandLineInterface, ParameterInterface
 {

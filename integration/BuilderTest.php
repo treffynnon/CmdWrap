@@ -1,6 +1,6 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
+use Treffynnon\CommandWrap\Builder;
 
 class BuilderTest extends PHPUnit_Framework_TestCase
 {

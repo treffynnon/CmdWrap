@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Combinators\Pipe;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Combinators\Pipe;
 
 class PipeTest extends PHPUnit_Framework_TestCase
 {

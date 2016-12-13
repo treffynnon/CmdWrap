@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Treffynnon\CmdWrap\Types;
+namespace spec\Treffynnon\CommandWrap\Types;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -9,19 +9,19 @@ class CommandCollectionSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Treffynnon\CmdWrap\Types\CommandCollection');
+        $this->shouldHaveType('Treffynnon\CommandWrap\Types\CommandCollection');
     }
 
     function it_can_push_items_onto_command($command, $envVar, $envVar2)
     {
-        $command->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\CommandInterface');
+        $command->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\CommandInterface');
         $command->getValue()->willReturn('simon');
 
-        $envVar->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar->getValue()->willReturn('TEST');
         $envVar->getExtraValue()->willReturn("'123'");
 
-        $envVar2->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar2->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar2->getValue()->willReturn('TEST_VAR');
         $envVar2->getExtraValue()->willReturn("'345'");
 
@@ -30,28 +30,28 @@ class CommandCollectionSpec extends ObjectBehavior
         $this->push($envVar2);
         $this->get()->shouldHaveCount(3);
         $r = $this->get();
-        $r[0]->shouldBeAnInstanceOf('Treffynnon\\CmdWrap\\Types\\CommandLine\\CommandInterface');
+        $r[0]->shouldBeAnInstanceOf('Treffynnon\\CommandWrap\\Types\\CommandLine\\CommandInterface');
         $r[0]->getValue()->shouldReturn('simon');
 
-        $r[1]->shouldBeAnInstanceOf('Treffynnon\\CmdWrap\\Types\\CommandLine\\EnvVarInterface');
+        $r[1]->shouldBeAnInstanceOf('Treffynnon\\CommandWrap\\Types\\CommandLine\\EnvVarInterface');
         $r[1]->getValue()->shouldReturn('TEST');
         $r[1]->getExtraValue()->shouldReturn("'123'");
 
-        $r[2]->shouldBeAnInstanceOf('Treffynnon\\CmdWrap\\Types\\CommandLine\\EnvVarInterface');
+        $r[2]->shouldBeAnInstanceOf('Treffynnon\\CommandWrap\\Types\\CommandLine\\EnvVarInterface');
         $r[2]->getValue()->shouldReturn('TEST_VAR');
         $r[2]->getExtraValue()->shouldReturn("'345'");
     }
 
     function it_can_filter($command, $envVar, $envVar2)
     {
-        $command->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\CommandInterface');
+        $command->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\CommandInterface');
         $command->getValue()->willReturn('simon');
 
-        $envVar->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar->getValue()->willReturn('TEST');
         $envVar->getExtraValue()->willReturn("'123'");
 
-        $envVar2->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar2->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar2->getValue()->willReturn('TEST_VAR');
         $envVar2->getExtraValue()->willReturn("'345'");
 
@@ -61,23 +61,23 @@ class CommandCollectionSpec extends ObjectBehavior
 
         $this->get()->shouldHaveCount(3);
         $result = $this->filter(function($item) {
-            return !($item instanceOf \Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface);
+            return !($item instanceOf \Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface);
         })->get();
         $result->shouldHaveCount(1);
     }
 
     function it_can_reduce($command, $envVar, $envVar2)
     {
-        $command->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\CommandInterface');
+        $command->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\CommandInterface');
         $command->getValue()->willReturn('simon');
         $command->getString()->willReturn('simon');
 
-        $envVar->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar->getValue()->willReturn('TEST');
         $envVar->getExtraValue()->willReturn("'123'");
         $envVar->getString()->willReturn("TEST='123'");
 
-        $envVar2->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar2->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar2->getValue()->willReturn('TEST_VAR');
         $envVar2->getExtraValue()->willReturn("'345'");
         $envVar2->getString()->willReturn("TEST_VAR='345'");
@@ -94,16 +94,16 @@ class CommandCollectionSpec extends ObjectBehavior
 
     function it_can_sort($command, $envVar, $envVar2)
     {
-        $command->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\CommandInterface');
+        $command->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\CommandInterface');
         $command->getValue()->willReturn('simon');
         $command->getString()->willReturn('simon');
 
-        $envVar->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar->getValue()->willReturn('TEST_ENVV');
         $envVar->getExtraValue()->willReturn("'123'");
         $envVar->getString()->willReturn("TEST_ENVV='123'");
 
-        $envVar2->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar2->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar2->getValue()->willReturn('TEST_VAR');
         $envVar2->getExtraValue()->willReturn("'345'");
         $envVar2->getString()->willReturn("TEST_VAR='345'");
@@ -129,16 +129,16 @@ class CommandCollectionSpec extends ObjectBehavior
 
     function it_can_reverse($command, $envVar, $envVar2)
     {
-        $command->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\CommandInterface');
+        $command->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\CommandInterface');
         $command->getValue()->willReturn('simon');
         $command->getString()->willReturn('simon');
 
-        $envVar->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar->getValue()->willReturn('TEST');
         $envVar->getExtraValue()->willReturn("'123'");
         $envVar->getString()->willReturn("TEST='123'");
 
-        $envVar2->beADoubleOf('Treffynnon\CmdWrap\Types\CommandLine\EnvVarInterface');
+        $envVar2->beADoubleOf('Treffynnon\CommandWrap\Types\CommandLine\EnvVarInterface');
         $envVar2->getValue()->willReturn('TEST_VAR');
         $envVar2->getExtraValue()->willReturn("'345'");
         $envVar2->getString()->willReturn("TEST_VAR='345'");

@@ -1,6 +1,6 @@
 <?php
 
-namespace Treffynnon\CmdWrap;
+namespace Treffynnon\CommandWrap;
 
 interface ResponseInterface
 {

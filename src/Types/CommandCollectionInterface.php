@@ -1,8 +1,8 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Types;
+namespace Treffynnon\CommandWrap\Types;
 
-use Treffynnon\CmdWrap\Types\CommandLine\CommandLineInterface;
+use Treffynnon\CommandWrap\Types\CommandLine\CommandLineInterface;
 
 interface CommandCollectionInterface
 {

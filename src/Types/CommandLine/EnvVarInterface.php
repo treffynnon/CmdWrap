@@ -1,8 +1,8 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Types\CommandLine;
+namespace Treffynnon\CommandWrap\Types\CommandLine;
 
-use Treffynnon\CmdWrap\Types\TypeInterface;
+use Treffynnon\CommandWrap\Types\TypeInterface;
 
 interface EnvVarInterface extends TypeInterface, CommandLineInterface
 {

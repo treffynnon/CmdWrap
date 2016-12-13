@@ -1,8 +1,8 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Types;
+namespace Treffynnon\CommandWrap\Types;
 
-use Treffynnon\CmdWrap\Utils as U;
+use Treffynnon\CommandWrap\Utils as U;
 
 abstract class TypeAbstract implements TypeInterface
 {

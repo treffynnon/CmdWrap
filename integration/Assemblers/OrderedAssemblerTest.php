@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Assemblers\OrderedAssembler;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Assemblers\OrderedAssembler;
 
 class OrderedAssemblerTest extends PHPUnit_Framework_TestCase
 {

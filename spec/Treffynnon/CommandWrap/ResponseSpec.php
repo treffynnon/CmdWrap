@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Treffynnon\CmdWrap;
+namespace spec\Treffynnon\CommandWrap;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -14,7 +14,7 @@ class ResponseSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Treffynnon\CmdWrap\ResponseInterface');
+        $this->shouldHaveType('Treffynnon\CommandWrap\ResponseInterface');
     }
 
     function let()

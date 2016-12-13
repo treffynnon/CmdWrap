@@ -1,6 +1,6 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Runners;
+namespace Treffynnon\CommandWrap\Runners;
 
 abstract class RunnerAbstract
 {
@@ -9,15 +9,15 @@ abstract class RunnerAbstract
     protected $lastCommand = '';
     protected $responseClass;
 
-    public function __construct(\Treffynnon\CmdWrap\ResponseInterface $class = null)
+    public function __construct(\Treffynnon\CommandWrap\ResponseInterface $class = null)
     {
-        $this->setResponseClass(new \Treffynnon\CmdWrap\Response);
+        $this->setResponseClass(new \Treffynnon\CommandWrap\Response);
         if ($class) {
             $this->setResponseClass($class);
         }
     }
 
-    public function setResponseClass(\Treffynnon\CmdWrap\ResponseInterface $class)
+    public function setResponseClass(\Treffynnon\CommandWrap\ResponseInterface $class)
     {
         $this->responseClass = $class;
     }

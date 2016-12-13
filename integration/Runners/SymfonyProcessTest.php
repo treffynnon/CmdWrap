@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Runners\SymfonyProcess;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Runners\SymfonyProcess;
 
 class SymfonyProcessTest extends PHPUnit_Framework_TestCase
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Treffynnon\CmdWrap\Types\CommandLine;
+namespace Treffynnon\CommandWrap\Types\CommandLine;
 
-use Treffynnon\CmdWrap\Types\TypeAbstract;
+use Treffynnon\CommandWrap\Types\TypeAbstract;
 
 class Flag extends TypeAbstract implements CommandLineInterface, FlagInterface
 {

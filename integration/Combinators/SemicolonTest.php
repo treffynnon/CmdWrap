@@ -1,7 +1,7 @@
 <?php
 
-use Treffynnon\CmdWrap\Builder;
-use Treffynnon\CmdWrap\Combinators\Semicolon;
+use Treffynnon\CommandWrap\Builder;
+use Treffynnon\CommandWrap\Combinators\Semicolon;
 
 class SemicolonTest extends PHPUnit_Framework_TestCase
 {

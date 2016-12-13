@@ -1,4 +1,4 @@
-# CmdWrap
+# Command Wrap
 
 A PHP library to wrap the command line/terminal/shell. It provides a clean
 builder that escapes arguments and commands - you can extract a command
@@ -103,24 +103,24 @@ appropriate caution.
 
 ## Available runners
 
-* Symfony Process (`Treffynnon\CmdWrap\Runners\SymfonyProcess`) _recommended_
-* `exec()` (`Treffynnon\CmdWrap\Runners\Exec`)
-* `passthru()` (`Treffynnon\CmdWrap\Runners\Passthru`)
-* `system()` (`Treffynnon\CmdWrap\Runners\System`)
+* Symfony Process (`Treffynnon\CommandWrap\Runners\SymfonyProcess`) _recommended_
+* `exec()` (`Treffynnon\CommandWrap\Runners\Exec`)
+* `passthru()` (`Treffynnon\CommandWrap\Runners\Passthru`)
+* `system()` (`Treffynnon\CommandWrap\Runners\System`)
 
-By implementing `Treffynnon\CmdWrap\Runners\RunnerInterface` you can also
+By implementing `Treffynnon\CommandWrap\Runners\RunnerInterface` you can also
 provide your own custom runner.
 
-When a command is executed via a runner it will return an instance of `\Treffynnon\CmdWrap\Response`
+When a command is executed via a runner it will return an instance of `\Treffynnon\CommandWrap\Response`
 containing the response from STDOUT and STDERR if available.
 
 ## Command combinators
 
 POSIX commands can be combined with a few characters such as:
 
-* && (`AndAnd`)
-* | (`Pipe`)
-* ; (`Semicolon`)
+* && (`Treffynnon\CommandWrap\Combinators\AndAnd`)
+* | (`Treffynnon\CommandWrap\Combinators\Pipe`)
+* ; (`Treffynnon\CommandWrap\Combinators\Semicolon`)
 
 These have been wrapped up into objects that you can use to combine
 commands/builders. You can also combine combinators too!

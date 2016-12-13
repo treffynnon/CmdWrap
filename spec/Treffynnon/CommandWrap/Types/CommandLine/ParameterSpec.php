@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Treffynnon\CmdWrap\Types\CommandLine;
+namespace spec\Treffynnon\CommandWrap\Types\CommandLine;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -9,8 +9,8 @@ class ParameterSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Treffynnon\CmdWrap\Types\CommandLine\Parameter');
-        $this->shouldHaveType('Treffynnon\CmdWrap\Types\CommandLine\ParameterInterface');
+        $this->shouldHaveType('Treffynnon\CommandWrap\Types\CommandLine\Parameter');
+        $this->shouldHaveType('Treffynnon\CommandWrap\Types\CommandLine\ParameterInterface');
     }
 
     function it_can_take_and_emit_parameters()
