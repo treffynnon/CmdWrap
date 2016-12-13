@@ -3,7 +3,7 @@
     "description": "Wraps command line access into a builder and provides argument escaping",
     "type": "library",
     "keywords": ["console", "command line", "command", "shell", "wrapper"],
-    "homepage": "https://github.com/treffynnon/CmdWrap",
+    "homepage": "https://github.com/treffynnon/command-wrap",
     "license": "BSD",
     "authors": [
         {

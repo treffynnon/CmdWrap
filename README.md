@@ -7,7 +7,7 @@ string to run as you please or pass the builder to a runner.
 ## Installation
 
 ```bash
-composer require treffynnon/cmdwrap
+composer require treffynnon/command-wrap
 ```
 
 ## Example
