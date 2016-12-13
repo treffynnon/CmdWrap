@@ -1,5 +1,5 @@
 {
-    "name": "treffynnon/cmdwrap",
+    "name": "treffynnon/command-wrap",
     "description": "Wraps command line access into a builder and provides argument escaping",
     "type": "library",
     "keywords": ["console", "command line", "command", "shell", "wrapper"],
