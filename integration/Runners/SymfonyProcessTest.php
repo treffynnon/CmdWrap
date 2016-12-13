@@ -43,4 +43,22 @@ class SymfonyProcessTest extends PHPUnit_Framework_TestCase
         $this->assertSame(127, $r->getStatus());
         $this->assertSame("sh: dat1e: command not found\n", $r->getError());
     }
+
+    public function testRegressionCombinators()
+    {
+        $x = new Builder();
+        $x->addCommand('echo')
+          ->addParameter('hello world');
+        $x2 = new Builder();
+        $x2->addCommand('grep "h"');
+        $x3 = new \Treffynnon\CommandWrap\Combinators\Pipe(
+            $x,
+            $x2
+        );
+        
+        $runner = new SymfonyProcess();
+        $r = $runner->run($x3);
+        $this->assertSame("echo 'hello world' | grep \"h\"", $r->getCommand());
+        $this->assertSame('hello world', trim($r->getOutput()));
+    }
 }

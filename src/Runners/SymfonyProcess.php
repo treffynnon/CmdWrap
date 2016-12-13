@@ -55,11 +55,18 @@ class SymfonyProcess extends RunnerAbstract implements RunnerInterface
 
     public function getEnvVarArray(RunnableInterface $command)
     {
-        return $command->getCommandAssembler()->getCommandLine(
+        $env = $command->getCommandAssembler()->getCommandLine(
             function ($item) {
                 return ($item instanceof CL\EnvVarInterface);
             }
-        )->get();
+        );
+        if (is_object($env)) {
+            return $env->get();
+        } elseif (is_array($env)) {
+            return array_reduce($env, function ($carry, $item) {
+                return $carry[] = $item->get();
+            }, []);
+        }
     }
 
     public function prepareSymfonyProcessCallable(callable $func = null)
