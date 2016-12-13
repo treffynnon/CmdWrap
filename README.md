@@ -200,4 +200,4 @@ composer test
 
 ## Licence
 
-BSD 2 clause licence - see LICENCE.md.
+BSD 3 clause licence - see LICENCE.md.
