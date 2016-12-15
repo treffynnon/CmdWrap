@@ -90,8 +90,8 @@ $cmd = $bld->getCommandAssembler()
 | Type        | Builder method                                | Example final output           |
 | ----------- | --------------------------------------------- | ------------------------------ |
 | `Command`   | `addCommand('ls');`                           | `ls`                           |
-| `Flag`      | `addFlag('-t');`                              | `-t`                           |
-| `Flag`      | `addFlag('-t', '/tmp');`                      | `-t='/tmp'`                    |
+| `Flag`      | `addFlag('t');`                               | `-t`                           |
+| `Flag`      | `addFlag('t', '/tmp');`                       | `-t='/tmp'`                    |
 | `Argument`  | `addArgument('results');`                     | `--results`                    |
 | `Argument`  | `addArgument('results', '/tmp/results.log');` | `--results='/tmp/results.log'` |
 | `Parameter` | `addParameter('parameter');`                  | `'parameter'`                  |

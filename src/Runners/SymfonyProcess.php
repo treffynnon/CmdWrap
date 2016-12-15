@@ -64,7 +64,7 @@ class SymfonyProcess extends RunnerAbstract implements RunnerInterface
             return $env->get();
         } elseif (is_array($env)) {
             return array_reduce($env, function ($carry, $item) {
-                return $carry[] = $item->get();
+                return array_merge($carry, $item->get());
             }, []);
         }
     }

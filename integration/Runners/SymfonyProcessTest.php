@@ -48,9 +48,12 @@ class SymfonyProcessTest extends PHPUnit_Framework_TestCase
     {
         $x = new Builder();
         $x->addCommand('echo')
+          ->addEnvVar('ENV_VAR', 'test')
           ->addParameter('hello world');
         $x2 = new Builder();
-        $x2->addCommand('grep "h"');
+        $x2->addEnvVar('ENV_VAR2', 'test2')
+           ->addEnvVar('ENV_VAR3', 'test3')
+           ->addCommand('grep "h"');
         $x3 = new \Treffynnon\CommandWrap\Combinators\Pipe(
             $x,
             $x2
@@ -60,5 +63,11 @@ class SymfonyProcessTest extends PHPUnit_Framework_TestCase
         $r = $runner->run($x3);
         $this->assertSame("echo 'hello world' | grep \"h\"", $r->getCommand());
         $this->assertSame('hello world', trim($r->getOutput()));
+
+        $this->assertCount(3, $runner->getEnvVarArray($x3));
+        foreach($runner->getEnvVarArray($x3) as $var) {
+            $this->assertInstanceOf('\Treffynnon\CommandWrap\Types\CommandLine\EnvVar', $var);
+            $this->assertSame($var->getValue() . '=' . $var->getExtraValue(), (string) $var);
+        }
     }
 }
